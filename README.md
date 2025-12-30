@@ -12,10 +12,7 @@
 
 ## 安装方法
 
-1. 将 `nodes.py` 文件放入你的 ComfyUI 自定义节点目录：
-   ```
-   ComfyUI/custom_nodes/ComfyUI-PainterI2V/nodes.py
-   ```
+1. git 安装
 
 2. 重启 ComfyUI
 
