@@ -12,6 +12,7 @@
 - **零动态损失**: 后处理校正策略，完全保留原始动态增强效果
 - **可调参数**: 精细控制动态幅度和颜色校正强度
 - **直观命名**: 输出端口清晰标注，便于工作流连接
+<img width="952" height="366" alt="image" src="https://github.com/user-attachments/assets/dc04d4c4-6f05-48a3-a34e-e1710ad5f812" />
 
 ## 安装方法
 
