@@ -84,11 +84,11 @@ class PainterI2VAdvanced(io.ComfyNode):
                     enhanced_mean = post_enhanced.mean(dim=(2, 3, 4))
                     
                     mean_drift = torch.abs(enhanced_mean - orig_mean) / (torch.abs(orig_mean) + 1e-6)
-                    problem_channels = mean_drift > 0.12
+                    problem_channels = mean_drift > 0.18
                     
                     if problem_channels.any():
                         drift_amount = enhanced_mean - orig_mean
-                        correction = drift_amount * problem_channels.float() * correct_strength * 0.08
+                        correction = drift_amount * problem_channels.float() * correct_strength * 0.03
                         
                         for b in range(batch_size):
                             for c in range(16):
@@ -102,8 +102,8 @@ class PainterI2VAdvanced(io.ComfyNode):
                     orig_brightness = concat_latent_image_original.mean()
                     enhanced_brightness = post_enhanced.mean()
                     
-                    if enhanced_brightness < orig_brightness * 0.96:
-                        brightness_boost = min(orig_brightness / (enhanced_brightness + 1e-6), 1.04)
+                    if enhanced_brightness < orig_brightness * 0.92:
+                        brightness_boost = min(orig_brightness / (enhanced_brightness + 1e-6), 1.05)
                         post_enhanced = torch.where(
                             post_enhanced < 0.5,
                             post_enhanced * brightness_boost,
