@@ -28,10 +28,8 @@ class PainterI2VAdvanced(io.ComfyNode):
                 io.Image.Input("start_image", optional=True),
             ],
             outputs=[
-                io.Conditioning.Output(display_name="high_positive"),
-                io.Conditioning.Output(display_name="high_negative"),
-                io.Conditioning.Output(display_name="low_positive"),
-                io.Conditioning.Output(display_name="low_negative"),
+                io.Conditioning.Output(display_name="positive"),
+                io.Conditioning.Output(display_name="negative"),
                 io.Latent.Output(display_name="latent"),
             ]
         )
@@ -142,7 +140,7 @@ class PainterI2VAdvanced(io.ComfyNode):
 
         out_latent = {}
         out_latent["samples"] = latent
-        return io.NodeOutput(positive, negative, positive_original, negative_original, out_latent)
+        return io.NodeOutput(positive, negative, out_latent)
 
 
 class PainterI2VAdvancedExtension(ComfyExtension):
